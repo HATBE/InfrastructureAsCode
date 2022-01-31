@@ -31,9 +31,8 @@ ExecStart=screen -DmS mc java -Xmx3072M -jar paper.jar nogui
 [Install]
 WantedBy=multi-user.target
 EOF
-        mkdir -p /opt/mc-server/plugins
-        cp /vagrant/plugins/* /opt/mc-server/plugins/
         systemctl enable mc-server
         systemctl start mc-server
     SHELL
+    config.vm.synced_folder "./plugins", "/opt/mc-server/plugins"
 end
